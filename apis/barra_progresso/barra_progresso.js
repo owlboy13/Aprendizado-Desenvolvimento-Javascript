@@ -3,7 +3,7 @@ var ctx = canvas.getContext('2d');
 
 var x = 0;
 var y = 0;
-var altura = 10;
+var altura = 5;
 var largura = 0;
 var fator = 15;
 var resolucao = 1920;
