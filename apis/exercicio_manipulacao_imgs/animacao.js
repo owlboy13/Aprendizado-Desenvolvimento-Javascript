@@ -206,11 +206,9 @@ function pararAnimacao() {
 }
 
 function animar() {
-    if (!animacaoAtiva) return;
-    
+    if (!animacaoAtiva) return; 
     // Limpar canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
     // Atualizar posição do círculo
     const circ = estadoObjetos.circulo;
     circ.x += circ.velocidadeX;
