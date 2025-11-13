@@ -8,6 +8,64 @@ const opcoes = ['PEDRA', 'PAPEL', 'TESOURA'];
 let placarUsuario = 0;
 let placarComputador = 0;
 
+// Evento quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    desenharMaoFechada();
+    configurarEventos();
+});
+
+// Configura todos os eventos
+function configurarEventos() {
+    // Eventos para os botões de jogo
+    document.getElementById('btnPedra').addEventListener('click', function() {
+        jogar(0);
+    });
+    
+    document.getElementById('btnPapel').addEventListener('click', function() {
+        jogar(1);
+    });
+    
+    document.getElementById('btnTesoura').addEventListener('click', function() {
+        jogar(2);
+    });
+    
+    // Evento para o botão reiniciar
+    document.getElementById('btnReiniciar').addEventListener('click', reiniciar);
+    
+    // Evento de teclado para jogar com atalhos
+    document.addEventListener('keydown', function(event) {
+        switch(event.key) {
+            case '1':
+                jogar(0); // Pedra
+                break;
+            case '2':
+                jogar(1); // Papel
+                break;
+            case '3':
+                jogar(2); // Tesoura
+                break;
+            case ' ':
+                reiniciar();
+                break;
+        }
+    });
+    
+    // Evento de mouseover nos botões (feedback visual)
+    const botoes = document.querySelectorAll('button[id^="btn"]');
+    botoes.forEach(botao => {
+        botao.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        
+        botao.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Evento de duplo clique no canvas para reiniciar
+    canvas.addEventListener('dblclick', reiniciar);
+}
+
 // Desenhar mão fechada
 function desenharMaoFechada() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -27,7 +85,7 @@ function desenharMaoFechada() {
     // Texto Instrucional
     ctx.font = '16px Arial';
     ctx.fillStyle = '#666';
-    ctx.fillText('Escolha uma opção abaixo', canvas.width / 2, canvas.height -20);
+    ctx.fillText('Escolha uma opção abaixo', canvas.width / 2, canvas.height - 20);
 }
 
 // Função principal do jogo
@@ -45,7 +103,14 @@ function jogar(escolhaUsuario) {
         placarUsuario++;
         resultadoElement.textContent = 'Você Ganhou!';
         resultadoElement.style.color = 'green';
-    } else if (resultado === 'computador'){
+        
+        // Evento de feedback visual para vitória
+        resultadoElement.classList.add('destaque');
+        setTimeout(() => {
+            resultadoElement.classList.remove('destaque');
+        }, 1000);
+        
+    } else if (resultado === 'computador') {
         placarComputador++;
         resultadoElement.textContent = 'Computador Ganhou!';
         resultadoElement.style.color = 'red';
@@ -54,9 +119,17 @@ function jogar(escolhaUsuario) {
         resultadoElement.style.color = 'blue';
     }
 
-    //Atualiza o placar
+    // Atualiza o placar
     placarUsuarioElement.textContent = placarUsuario;
     placarComputadorElement.textContent = placarComputador;
+    
+    // Evento de animação no placar quando atualiza
+    [placarUsuarioElement, placarComputadorElement].forEach(element => {
+        element.classList.add('atualizando');
+        setTimeout(() => {
+            element.classList.remove('atualizando');
+        }, 300);
+    });
 }
 
 function desenharResultado(usuario, computador) {
@@ -78,7 +151,7 @@ function desenharResultado(usuario, computador) {
     ctx.font = '16px Arial';
     ctx.fillText('Você', 100, 190);
 
-    //Escolha Computador
+    // Escolha Computador
     ctx.font = '60px Arial';
     ctx.fillText(getChoice(computador), 300, 150);
     ctx.font = '16px Arial';
@@ -88,7 +161,6 @@ function desenharResultado(usuario, computador) {
     ctx.font = '20px Arial';
     ctx.fillStyle = '#666';
     ctx.fillText('VS', canvas.width / 2, 160);
-    
 }
 
 function getChoice(escolha) {
@@ -96,7 +168,7 @@ function getChoice(escolha) {
         '✊',
         '🖐️',
         '✌️'
-    ]
+    ];
     return choices[escolha];
 }
 
@@ -107,7 +179,7 @@ function determinarVencedor(usuario, computador) {
         (usuario === 0 && computador === 2) || // Pedra vence tesoura
         (usuario === 1 && computador === 0) || // Papel vence pedra
         (usuario === 2 && computador === 1) // Tesoura vence papel
-    ){
+    ) {
         return 'usuario';
     }
 
@@ -120,11 +192,12 @@ function reiniciar() {
     placarUsuarioElement.textContent = '0';
     placarComputadorElement.textContent = '0';
     resultadoElement.textContent = '';
+    resultadoElement.style.color = '';
     desenharMaoFechada();
+    
+    // Feedback visual do reinício
+    canvas.style.borderColor = 'gold';
+    setTimeout(() => {
+        canvas.style.borderColor = '#333';
+    }, 500);
 }
-
-desenharMaoFechada();
-
-
-
-
