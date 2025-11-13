@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <h1>Cadastre-se</h1><br>
+            <div class="blocoInput">
+                <label for="">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-input" required><br>
+            </div>
+            <div class="blocoInput">
+                <label for="">Fone</label>
+                <input type="tel" id="fone" name="fone" class="form-input" required><br>
+            </div>
+            <div class="blocoInput">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-input" required><br>
+            </div>
+            <div class="blocoInput">
+                <label for="cpf">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-input" required><br>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

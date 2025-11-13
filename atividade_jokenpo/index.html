@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokenpô - Atividade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Jokenpô</h1>
+        
+        <div class="placar">
+            <span>Você: <span id="placarUsuario">0</span></span> | 
+            <span>Computador: <span id="placarComputador">0</span></span>
+        </div>
+        <canvas id="jogoCanvas" width="400" height="300"></canvas>
+        
+        <div id="resultado"></div>
+        
+        <div class="botoes">
+            <button onclick="jogar(0)">🪨 Pedra</button>
+            <button onclick="jogar(1)">📄 Papel</button>
+            <button onclick="jogar(2)">✂️ Tesoura</button>
+        </div>
+        
+        <button onclick="reiniciar()" style="background-color: #ff9800; margin-right: 25px;">Reiniciar</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
