@@ -61,11 +61,7 @@ function configurarEventos() {
             this.style.transform = 'scale(1)';
         });
     });
-    
-    // Evento de duplo clique no canvas para reiniciar
-    canvas.addEventListener('dblclick', reiniciar);
 }
-
 // Desenhar mão fechada
 function desenharMaoFechada() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);

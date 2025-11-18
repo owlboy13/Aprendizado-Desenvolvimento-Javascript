@@ -1,0 +1,11 @@
+Baixar node js e instalar
+
+- comando para instalar vue
+1 - npm install vue
+2 - (criar aplicação) - npm install -g @vue/cli
+
+- comando para criar projeto vue
+vue create <nome-projeto> || npm create vue@latest
+
+
+
