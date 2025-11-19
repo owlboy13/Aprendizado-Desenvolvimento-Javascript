@@ -1,0 +1,13 @@
+-- comando para instalar react -- 
+npm install -g create-react-app
+
+-- criar projeto hello- world react --
+npx create-react-app hello-world
+
+-- projeto simples -- 
+npx create-react-app mouse-position 
+(Esse projeto será usado para configurarmos a detecção da 
+posição do ponteiro do mouse dentro da página)
+
+-- rodar local --
+npm start
