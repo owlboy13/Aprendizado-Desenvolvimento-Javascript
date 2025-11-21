@@ -1,0 +1,48 @@
+<div class="convite-container">
+  <div class="content" [class.success]="showSuccess">
+    
+    <!-- Título -->
+    <h1>CONVITE OFICIAL</h1>
+    
+    <div class="message">
+      <p>Você está oficialmente convidado(a) para:</p>
+      <h2>TOMAR UMA 🍻</h2>
+      <p class="details">
+        <strong>📅 Data:</strong> Quando der vontade<br>
+        <strong>📍 Local:</strong> Onde a gente se encontrar<br>
+        <strong>🍻 O que levar:</strong> Disposição e o figado!
+      </p>
+    </div>
+
+    <!-- Pergunta -->
+    <div class="question">
+      <p>Vai comparecer?</p>
+    </div>
+
+    <!-- Botões -->
+    <div class="buttons" *ngIf="!showSuccess">
+      <!-- Botão SIM -->
+      <button class="btn btn-yes" (click)="onYesClick()">
+        ✅ SIM, VOU COM CERTEZA!
+      </button>
+
+      <!-- Botão NÃO (que foge) -->
+      <button 
+        class="btn btn-no" 
+        (mouseenter)="onNoHover()"
+        (click)="onNoClick()"
+        [style.top]="currentNoPosition.top"
+        [style.left]="currentNoPosition.left">
+        ❌ NÃO VOU PODER
+      </button>
+    </div>
+
+    <!-- Mensagem de sucesso -->
+    <div class="success-message" *ngIf="showSuccess">
+      <h2>🎊 AI SIM, HEIN! 🎊</h2>
+      <p>Já tava na hora de aceitar!</p>
+      <div class="loading">Redirecionando para os agradecimentos...</div>
+    </div>
+
+  </div>
+</div>
